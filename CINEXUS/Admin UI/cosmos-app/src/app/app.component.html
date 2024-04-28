@@ -1,0 +1,43 @@
+<!-- <app-camera (pictureTaken)="handleImage($event)"></app-camera> -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: #8093e2;">
+    <a class="navbar-brand m-2 p-2" href="#"><h2>Cinexus Admin <i class="bi bi-person-fill-gear"></i></h2></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav w-100">
+        <!-- {{localStorage.getItem('userId')}} -->
+        <a class="nav-item nav-link active" *ngIf="localStorage.getItem('userId'); " href="/movies">Movies</a>
+        <a class="nav-item nav-link active" *ngIf="localStorage.getItem('userId'); " href="/showtimes">Showtimes</a>
+        <a class="nav-item nav-link active" *ngIf="localStorage.getItem('userId'); " href="/theaters">Theater</a>
+        <a class="nav-item nav-link active" *ngIf="localStorage.getItem('userId'); " href="/analytics">Analytics</a>
+
+        <!-- <a class="nav-item nav-link active" href="/sessions">Sessions</a> -->
+        <a class="nav-item nav-link" *ngIf="!localStorage.getItem('userId')" href="/login">Login</a>
+        <!-- <a class="nav-item nav-link" href="#">Logout</a> -->
+        <!-- <a class="nav-item nav-link" href="#">Pricing</a>
+        <a class="nav-item nav-link disabled" href="#">Disabled</a> -->
+
+        <div *ngIf="localStorage.getItem('userId')" class=" w-100">
+          <div ngbDropdown class="d-inline-block dropstart" style="float: right;">
+            <button *ngIf="localStorage.getItem('userId')" type="button" class="btn text-white" id="dropdownBasic1" ngbDropdownToggle>
+              <i class="bi bi-person"></i>  </button> 
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropstart">
+              <button ngbDropdownItem href="/">{{localStorage.getItem('email')}}</button>
+              <button ngbDropdownItem (click)="logout()">Logout</button>
+            </div>
+          </div>
+      </div>
+
+
+      </div>
+    </div>
+    
+  </nav>
+<div class="snapshot" *ngIf="webcamImage">
+<img [src]="webcamImage.imageAsDataUrl" />
+</div>
+<router-outlet></router-outlet>
+<!-- <app-add-student>
+    
+</app-add-student> -->

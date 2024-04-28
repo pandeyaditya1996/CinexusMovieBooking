@@ -1,0 +1,7 @@
+user_id,username,password,role,membership_type
+1,user1,password1,Member,Regular
+2,user2,password2,Member,Premium
+3,employee1,employee_password1,Theater Employee,
+4,john_doe,password123,Member,Regular
+5,jane_smith,secret_pass,Member,Premium
+6,theater_manager,manager123,Theater Employee,

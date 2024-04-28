@@ -1,0 +1,128 @@
+<h3 class="p-3 m-2" style="float: left;"> <i class="bi bi-person-video3 p-1 m-1"></i> Theaters</h3>
+<button type="button" class="btn btn-light m-3"
+    style="float: right; background-color: var(--main-color) !important; color: white" (click)="showPopup=true" >Add New</button>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':'block'}" *ngIf="showPopup">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <button type="button" class="btn-close p-1 m-1" style="align-self: end;" aria-label="Close"
+                (click)="closePopup()"></button>
+
+            <div class="modal-body w-100" style="align-self: center;">
+
+                <h3 class="p-2" *ngIf="!edit">Add Theater</h3>
+                <h3 class="p-2" *ngIf="edit">Edit Theater</h3>
+
+                <form [formGroup]="theaterForm" (ngSubmit)="onSubmit()" class="ml-4 needs-validation p-2 w-100"
+                    novalidate>
+                    <div class="form-row" style="align-self: center;">
+
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Location: </label>
+                            <select class="form-select" aria-label="Default select example" formControlName="location_id">
+                                <option selected>Select</option>
+                                <ng-container *ngFor="let location of locations">
+                                  <option [ngValue]="location['location_id']" value="location['location_id']">{{location['name']}}
+                                  </option>
+                                </ng-container>
+                              </select>
+                        </div>
+
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Theater Name: </label>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                placeholder="Theater Name" formControlName="name" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Seating Capacity: </label>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                placeholder="Seat Capacity" formControlName="seating_capacity" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Distance (in miles): </label>
+                            <input type="number" class="form-control" id="validationCustom01"
+                                placeholder="Distance" formControlName="distance" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Address: </label>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                placeholder="Address" formControlName="address" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="validationCustom01">Coordinates (Latitude, Longitude):</label>
+                            <input type="text" class="form-control" id="validationCustomCoordinates"
+                                placeholder="Latitude, Longitude" formControlName="coordinates" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </form>
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="background-color: var(--main-color) !important; color: white"
+                    class="btn btn-primary" (click)="onSubmit()">Save</button>
+                <button type="button" class="btn btn-light" (click)="closePopup()">
+                    Clear
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped p-3 m-3">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Seating Capacity</th>
+        <th scope="col">Distance</th>
+        <th scope="col">Address</th>
+        <th scope="col">Location</th>
+        <th>Actions</th>
+  
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of theaters; ; index as i">
+        <tr>
+  
+
+          <th scope="row">{{item.name}}</th>
+          <td>{{item.seating_capacity}}</td>
+          <td>{{item.distance}}</td>
+          <td>{{item.address}}</td>
+          <td>{{item.location_name}}</td>
+          <td>
+            <i class="bi bi-pen m-1 p-1" style="cursor: pointer;" (click) = "showUpdatePopup(item)" ></i>
+            <i class="bi bi-trash m-1 p-1" style="cursor: pointer;" (click) = "delTheater(item)" ></i>
+          </td>
+        </tr>
+  
+      </ng-container>
+    </tbody>
+  </table>

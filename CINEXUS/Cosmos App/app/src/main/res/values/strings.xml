@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Cosmos</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_movie_detail">MovieDetailActivity</string>
+    <string name="title_activity_theater_detail">TheaterDetailActivity</string>
+    <string name="title_activity_about_movie">AboutMovieActivity</string>
+    <string name="title_activity_booking">BookingActivity</string>
+    <string name="title_activity_payment">PaymentActivity</string>
+    <string name="title_activity_payment_successful">PaymentSuccessfulActivity</string>
+    <string name="title_activity_tickets">TicketsActivity</string>
+    <string name="title_activity_my_tickets">MyTicketsActivity</string>
+    <string name="title_activity_movies_watched">MoviesWatchedActivity</string>
+    <string name="title_activity_cancel_booking">CancelBookingActivity</string>
+    <string name="title_activity_membership_payment">MembershipPaymentActivity</string>
+    <string name="title_activity_membership_payment_successful">
+        MembershipPaymentSuccessfulActivity
+    </string>
+    <string name="title_activity_tickets_cancelled">TicketsCancelledActivity</string>
+</resources>

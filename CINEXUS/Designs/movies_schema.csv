@@ -1,0 +1,7 @@
+movie_id,title,description,release_date,duration,genre,rating
+1,Movie 1,Description for Movie 1,2023-01-01,120,Action,7.5
+2,Movie 2,Description for Movie 2,2023-02-15,110,Comedy,8.0
+3,Movie 3,Description for Movie 3,2023-03-20,135,Drama,8.2
+4,Inception,A mind-bending thriller,2010-07-16,148,Science Fiction,8.8
+5,La La Land,A musical romance,2016-12-25,128,Musical,8.0
+6,The Dark Knight,A superhero action film,2008-07-18,152,Action,9.0

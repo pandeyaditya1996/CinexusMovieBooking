@@ -1,0 +1,32 @@
+<h2 class="p-2 m-4">Login <i class="bi bi-phone"></i> </h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="m-4  needs-validation p-2 w-50"
+novalidate>
+<div class="form-row" style="align-self: center;">
+
+    <div class="col-md-6 mb-3">
+        <label for="validationCustom01">Username: </label>
+        <input type="text" class="form-control" id="validationCustom01"
+            placeholder="username" formControlName="username" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="validationCustom01">Password: </label>
+        <input type="password" class="form-control" id="validationCustom01"
+            placeholder="password" formControlName="password" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <button type="button" style="background-color: var(--main-color) !important; color: white"
+                    class="btn btn-primary p-2 m-1" (click)="onSubmit()">Login</button>
+    <button type="button" class="btn btn-light m-1" (click)="clear()">Clear</button>
+
+</div>
+</form>

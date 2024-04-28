@@ -1,0 +1,44 @@
+One member from each team will click on this link and create a new team; other members will click on the link and select their team from the list and join it.
+
+Project Requirements:
+
+Use Case:
+
+Implement an end2end MovieTheater Club application  for your favorite movie theater chain. The system can manage multiplexes in many locations i.e. each location has multiple screens.
+
+The emphasis here is on team collaboration, so the points awarded will be based on individual contributions to the team and how the team performed overall.  
+
+    Components
+        APIs - input and output of API should be in JSON and should include error handling and validation of inputs
+        APIs will be demonstrated using a Web/mobile UI
+        UI is accessed by Members, Non-Members, and Theater employees (who are admins) -  (3 roles)
+        APIs should support following functionality:
+            For all users:
+                [D] View Home/Landing page showing information about the Theaters, locations, current movie schedules, and upcoming movies,
+                [D] View membership option - Regular and Premium
+                [D] View Registration/Signup page - viewable by all users
+                [D] Book tickets for a movie
+                [D] Each booking will include an online service fee ($1.50 per ticket)
+            For Enrolled and logged in Members:
+                [D] View members page - showing movie tickets purchased, rewards points accumulated
+                [D] Regular membership is free
+                Premium membership is for an annual fee of 15 dollars
+                [D] View list of Movies watched in the past 30 days
+                Book multiple seats (upto 8) for a movie show - using rewards points or payment method (pre-selected) - seats selected by the user
+                [D] Cancel previous tickets before showtime and request refund
+                [D] Accumulate rewards points (all members) 1 point per dollar
+                [D] Premium members get online service fee waived for any booking
+            Theater employees :
+                [D]Add/update/remove  -  movies/showtimes/theater assignment in the schedule 
+                [D] Configure seating capacity for each theater in a multiplex
+                View analytics dashboard showing Theater occupancy for the last 30/60/90 days
+                    Summarized by location
+                    Summarized by movies
+                [P] Configure discount prices for shows before 6pm and for Tuesday shows (Tuesday needs to be done)
+            APIs and UI functionality will be available based on Roles specified above
+            Assume the membership will be valid in multiple theater locations and Home page will let you select the Location to view corresponding schedules
+
+        Deploy API and Database to AWS or another cloud provider in an Auto Scaled EC2 Cluster with Load Balancer
+        Develop a Web or mobile UI that will call the deployed APIs
+        Create your own database with mock data for theaters, locations, schedules
+    

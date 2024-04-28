@@ -1,0 +1,124 @@
+
+<h3 class="p-3 m-2" style="float: left;"> <i class="bi bi-person-video3 m-1 p-1 "></i> Movies</h3>
+<button type="button" class="btn btn-light m-3"
+  style="float: right; background-color: var(--main-color) !important; color: white" (click)="showPopup=true">Add
+  New</button>
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':'block'}" *ngIf="showPopup">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <button type="button" class="btn-close p-1 m-1" style="align-self: end;" aria-label="Close"
+                (click)="closePopup()"></button>
+
+            <div class="modal-body w-100" style="align-self: center;">
+
+                <h3 class="p-2" *ngIf="!edit">Add Movie</h3>
+                <h3 class="p-2" *ngIf="edit">Edit Movie</h3>
+
+                <form [formGroup]="movieForm" (ngSubmit)="onSubmit()" class="ml-4 needs-validation p-2 w-100"
+                    novalidate>
+                    <div class="form-row" style="align-self: center;">
+
+                      <div class="col-md-8 mb-3">
+                        <label for="validationCustom01">Title: </label>
+                        <input type="text" class="form-control" id="validationCustom01"
+                            placeholder="Title" formControlName="title" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 mb-3">
+                      <label for="validationCustom01">Description: </label>
+                      <input type="textarea" class="form-control" id="validationCustom01"
+                          placeholder="Description" formControlName="description" required>
+                      <div class="valid-feedback">
+                          Looks good!
+                      </div>
+                  </div>
+
+                  <div class="col-md-8 mb-3">
+
+                    <label for="validationCustom01">Release Date: </label>
+      
+                      <div class="col-12">
+                        <div class="input-group">
+                          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="release_date" ngbDatepicker
+                            #d="ngbDatepicker" />
+                          <button style="background-color: var(--main-color) !important; color: white" class="btn btn-outline-secondary bi bi-calendar3"  (click)="d.toggle()"
+                            type="button"></button>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-md-8 mb-3">
+                    <label for="validationCustom01">Duration: </label>
+                    <input type="textarea" class="form-control" id="validationCustom01"
+                        placeholder="Duration" formControlName="duration" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                  </div>
+                  <div class="col-md-8 mb-3">
+                    <label for="validationCustom01">Genre: </label>
+                    <input type="text" class="form-control" id="validationCustom01"
+                        placeholder="Genre" formControlName="genre" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>                    
+                </div>
+                    <div class="col-md-8 mb-3">
+                      <label for="validationCustom01">Currently Running (Yes:1, No:0) </label>
+                      <input type="text" class="form-control" id="validationCustom01"
+                          placeholder="Running?" formControlName="currently_running" required>
+                      <div class="valid-feedback">
+                          Looks good!
+                      </div>
+                          </div>
+                    <!-- </div> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="background-color: var(--main-color) !important; color: white"
+                    class="btn btn-primary" (click)="onSubmit()">Save</button>
+                <button type="button" class="btn btn-light" (click)="closePopup()">
+                    Clear
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+<table class="table table-striped p-3 m-3">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Language</th>
+        <th>Actions</th>
+  
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of movies; ; index as i">
+        <tr>
+  
+
+          <th scope="row">{{item.title}}</th>
+          <td>{{item.release_date}}</td>
+          <td>{{item.duration}}</td>
+          <td>{{item.genre}}</td>
+          <td>{{item.language}}</td>
+          <td>
+            <i class="bi bi-pen m-1 p-1" style="cursor: pointer;" (click) = "showUpdatePopup(item)" ></i>
+            <i class="bi bi-trash m-1 p-1" style="cursor: pointer;" (click) = "delMovies(item)" ></i>
+          </td>
+        </tr>
+  
+      </ng-container>
+    </tbody>
+  </table>

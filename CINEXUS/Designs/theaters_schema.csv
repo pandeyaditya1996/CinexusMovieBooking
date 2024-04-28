@@ -1,0 +1,9 @@
+theater_id,location_id,name,seating_capacity
+1,1,Theater A,100
+2,1,Theater B,120
+3,2,Theater C,90
+4,3,Theater D,150
+5,1,Broadway Cinema,150
+6,1,City Center Theater,120
+7,2,Hollywood Multiplex,200
+8,3,Windy City Cinemas,180

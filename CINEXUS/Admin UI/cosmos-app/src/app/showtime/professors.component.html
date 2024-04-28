@@ -1,0 +1,123 @@
+<h3 class="p-3 m-2" style="float: left;"> <i class="bi bi-person-video3 p-1 m-1"></i>  Showtimes </h3>
+<button type="button" class="btn btn-light m-3"
+  style="float: right; background-color: var(--main-color) !important; color: white" (click)="openAddProffesorPopup()">Add
+  New</button>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':'block'}" *ngIf="showPopup">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <button type="button" class="btn-close p-1 m-1" style="align-self: end;" aria-label="Close"
+                (click)="closePopup()"></button>
+
+            <div class="modal-body w-100" style="align-self: center;">
+
+              <h3 class="p-2" *ngIf="!edit">Add Showtime</h3>
+              <h3 class="p-2" *ngIf="edit">Edit Showtime</h3>
+
+                <form [formGroup]="showtimeForm" (ngSubmit)="onSubmit()" class="ml-4 needs-validation p-2 w-100"
+                    novalidate>
+                    <div class="form-row" style="align-self: center;">
+
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Movie: </label>
+                            <select class="form-select" aria-label="Default select example" formControlName="movie_id">
+                                <option selected>Select</option>
+                                <ng-container *ngFor="let movie of movies">
+                                  <option [ngValue]="movie['movie_id']" value="movie['movie_id']">{{movie['title']}}
+                                  </option>
+                                </ng-container>
+                              </select>
+                        </div>
+
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Theater: </label>
+                            <select class="form-select" aria-label="Default select example" formControlName="theater_id">
+                                <option selected>Select</option>
+                                <ng-container *ngFor="let theater of theaters">
+                                  <option [ngValue]="theater['theater_id']" value="theater['theater_id']">{{theater['name']}}
+                                  </option>
+                                </ng-container>
+                              </select>
+                        </div>
+
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Showtime: </label>
+                            <ngb-timepicker formControlName="showtime" [spinners]="true" /><hr />
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <label for="validationCustom01">Discount (Before 6 PM / Tuesday): </label>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                placeholder="Discount (Before 6 PM / Tuesday)" formControlName="discount" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-8 mb-3">
+
+                            <label for="validationCustom02">From Date: </label>
+                              <div class="col-12">
+                                <div class="input-group">
+                                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp1" formControlName="from_date" ngbDatepicker
+                                    #d1="ngbDatepicker" />
+                                  <button style="background-color: var(--main-color) !important; color: white" class="btn btn-outline-secondary bi bi-calendar3"  (click)="d1.toggle()"
+                                    type="button"></button>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-md-8 mb-3">
+
+                            <label for="validationCustom02">To Date: </label>
+                              <div class="col-12">
+                                <div class="input-group">
+                                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp2" formControlName="to_date" ngbDatepicker
+                                    #d2="ngbDatepicker" />
+                                  <button style="background-color: var(--main-color) !important; color: white" class="btn btn-outline-secondary bi bi-calendar3"  (click)="d2.toggle()"
+                                    type="button"></button>
+                                </div>
+                              </div>
+                          </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="background-color: var(--main-color) !important; color: white"
+                    class="btn btn-primary" (click)="onSubmit()">Save</button>
+                <button type="button" class="btn btn-light" (click)="closePopup()">
+                    Clear
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped p-3 m-3">
+  <thead>
+    <tr>
+      <th scope="col">Showtime</th>
+      <th scope="col">Movie</th>
+      <th scope="col">Theater</th>
+      <th scope="col">From Date</th>
+      <th scope="col">To Date</th>
+      <th scope="col">Discount (Before 6 PM / Tuesday)</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of showtimes; ; index as i">
+      <tr>
+        <th scope="row">{{item.showtime}}</th>
+        <td>{{item.movie_title}}</td>
+        <td>{{item.theater_name}}</td>
+        <td>{{item.from_date}}</td>
+        <td>{{item.to_date}}</td>
+        <td>{{item.discount}}</td>
+        <td>
+          <i class="bi bi-pen" style="cursor: pointer;" (click) = "showUpdatePopup(item)" ></i>
+          <i class="bi bi-trash m-1 p-1" style="cursor: pointer;" (click) = "delShowtimes(item)" ></i>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
